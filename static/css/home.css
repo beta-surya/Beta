@@ -4,8 +4,11 @@
     padding: 0;
 }
 body{
-    background-color:#f8f6f6;
     font-family: "montserrat";
+    background-image: url(../img/tree-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
 }
 
 /* fonts */
@@ -22,7 +25,6 @@ body{
 #header{
     width: 100%;
     height: 4.5rem;
-    border-bottom:1px solid #d3d2d2;
 }
 #header #beta_logo{
     padding: 10px;
@@ -39,7 +41,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #f7f7f7;
+    background-color: rgba(247, 247, 247, 0);
 }
 #header #menu ul li{
     display: inline;
@@ -54,9 +56,13 @@ body{
 #header #menu ul li:hover{
     color: #ff4500;
     cursor: pointer;
-    text-decoration: underline;    
-    text-decoration-thickness: 2px;
-    text-decoration-color: #21203F;   
+}
+#selected-menu{
+    color: #ff4500 !important;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #21203F;
+    text-decoration-thickness: 1.25px;
 }
 /* menu button - visible on smaller width  */
 
@@ -82,7 +88,7 @@ body{
 #min-menu.min-menu-active{
     background-color: #ff4500;
     color: #21203F;
-    height: 8.5rem;
+    height: 12rem;
     visibility: visible;
 }
 #min-menu ul{
@@ -113,4 +119,11 @@ body{
     .min-off {
         display: none !important;
     }
+}
+
+/* default content page */
+#content{
+    width: 100%;
+    height: calc(100vh - 4.5rem);
+
 }

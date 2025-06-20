@@ -10,7 +10,7 @@ min_menu_btn.addEventListener("click", (event) => {
 
 // Hide menu when clicking outside of it
 document.addEventListener("click", (event) => {
-    // Check if click is outside the min-menu and min-menu-btn
+    // Check if click is outside the min-menu
     if (!min_menu.contains(event.target) ) {
         min_menu.classList.remove("min-menu-active");
         min_menu_btn.classList.remove("min-menu-active");

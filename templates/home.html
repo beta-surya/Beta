@@ -3,9 +3,8 @@
 
 <head>
 	<title> Beta</title>
-	<!-- <link rel="shortcut icon" href="img/Beta_Logo_-_transplant-Favicon_-_32x32.png" type="image/x-icon"> -->
-	<!-- <link rel="stylesheet" href="{ {{ url_for('static' , filename='css/home.css' ) }}}"> -->
-	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/Favicon.png') }}" type="image/x-icon">
 	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/home.css' )}}">
 </head>
 
@@ -17,6 +16,7 @@
 					close
 				</div> -->
 				<ul>
+					<li>Search</li>
 					<li>Diary</li>
 					<li>Todo</li>
 					<li>Notebook</li>
@@ -33,6 +33,7 @@
 						id="min-menu-btn"
 						/>
 					<ul  class="min-off">
+						<li id="selected-menu">Search</li>
 						<li>Diary</li>
 						<li>Todo</li>
 						<li>Notebook</li>
@@ -41,8 +42,13 @@
 			</div>
 			
 		</div>	
+		<div id="defaultcontent">
+			<div id="searchquery">
+				<img src="" alt="🔍">
+			</div>			
+		</div>
 		<div id="content">
-			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iure totam repellat placeat, nesciunt est suscipit molestias quibusdam sed eius amet incidunt reiciendis culpa vitae neque accusantium aut omnis quas voluptates?</p>
+
 		</div>
 	
 	</div>
