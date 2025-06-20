@@ -30,7 +30,7 @@ const platform = document.querySelector("#platform");
 
 const options = {
     engine: ['Google', 'Bing', 'Yahoo', 'DuckDuckGo'],
-    socialmedia: ['Reddit', 'YouTube'],
+    socialmedia: ['Reddit', 'YouTube','GitHub'],
     archive: ['Internet Archive', 'Wikipedia'],
     newstn: ['Vikatan','Puthiya Thalaimurai',
             'Dinamani'],
@@ -65,7 +65,8 @@ const options_links = {
     // Social media
     "Reddit": "https://www.reddit.com/search/?q=",
     "YouTube": "https://www.youtube.com/results?search_query=",
-   
+    "GitHub": "https://github.com/search?q=",
+
     // Archive / Library
     "Internet Archive": "https://archive.org/search.php?query=",
     "Wikipedia": "https://en.wikipedia.org/w/index.php?search=",
