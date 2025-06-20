@@ -11,17 +11,18 @@ body{
 /* fonts */
 @font-face {
     font-family: "montserrat-bold";
-    src: url(./font/montserrat.bold.ttf);
+    src: url(../font/montserrat.bold.ttf);
 }
 @font-face {
     font-family: "montserrat";
-    src: url(./font/montserrat.regular.ttf);
+    src: url(../font/montserrat.regular.ttf);
 }
 
 /* logo */
 #header{
     width: 100%;
     height: 4.5rem;
+    border-bottom:1px solid #d3d2d2;
 }
 #header #beta_logo{
     padding: 10px;

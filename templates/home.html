@@ -3,8 +3,10 @@
 
 <head>
 	<title> Beta</title>
-	<link rel="shortcut icon" href="img/Beta_Logo_-_transplant-Favicon_-_32x32.png" type="image/x-icon">
-	<link rel="stylesheet" href="home.css">
+	<!-- <link rel="shortcut icon" href="img/Beta_Logo_-_transplant-Favicon_-_32x32.png" type="image/x-icon"> -->
+	<!-- <link rel="stylesheet" href="{ {{ url_for('static' , filename='css/home.css' ) }}}"> -->
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"> -->
+	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/home.css' )}}">
 </head>
 
 <body>
@@ -22,10 +24,10 @@
 			</div>	
 			<div id="header">
 				<div id="beta_logo">
-					<img src="img/Beta_Logo_300x300_trim.png" alt="Beta" />
+					<img src="{{ url_for('static', filename='img/Beta_Logo_300x300_trim.png')}}" alt="Beta" />
 				</div>
 				<div id="menu">
-					<img src="/img/menu-horizontal.svg"
+					<img src="{{ url_for('static', filename='/img/menu-horizontal.svg') }}"
 						alt="Menu"  
 						class="min-on"
 						id="min-menu-btn"
@@ -45,7 +47,7 @@
 	
 	</div>
 
-	<script src="home.js"></script>
+	<script src="{{ url_for('static' , filename='js/home.js' )}}"></script>
 
 </body>
 
