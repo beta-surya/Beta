@@ -1,0 +1,115 @@
+/* common  */
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color:#f8f6f6;
+    font-family: "montserrat";
+}
+
+/* fonts */
+@font-face {
+    font-family: "montserrat-bold";
+    src: url(./font/montserrat.bold.ttf);
+}
+@font-face {
+    font-family: "montserrat";
+    src: url(./font/montserrat.regular.ttf);
+}
+
+/* logo */
+#header{
+    width: 100%;
+    height: 4.5rem;
+}
+#header #beta_logo{
+    padding: 10px;
+    padding-left:30px ;
+}
+#header #beta_logo img{
+    height: 2.8rem;
+    cursor: pointer;
+}
+
+/* header split */
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+}
+#header #menu ul li{
+    display: inline;
+    list-style-type: none;
+    padding-right: 40px;
+    color: #21203F;
+    font-family: "montserrat";
+    font-size: 1rem;
+    letter-spacing: 1px; 
+    align-items: center;
+}
+#header #menu ul li:hover{
+    color: #ff4500;
+    cursor: pointer;
+    text-decoration: underline;    
+    text-decoration-thickness: 2px;
+    text-decoration-color: #21203F;   
+}
+/* menu button - visible on smaller width  */
+
+#header #menu #min-menu-btn{
+    width: 35px;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+#header #menu #min-menu-btn.min-menu-active{
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+/* when menu btn is clicked - the min-menu will be shown */
+#min-menu{
+    height: 0;
+    visibility: hidden;
+    transition: height 0.8s ease,
+                color 1.5s ease,
+                background-color 1s ease;
+    color: transparent;
+}
+#min-menu.min-menu-active{
+    background-color: #ff4500;
+    color: #21203F;
+    height: 8.5rem;
+    visibility: visible;
+}
+#min-menu ul{
+    font-size: 1.125rem;
+    list-style-type:none;
+    margin-left: 5%;
+}
+#min-menu ul li:first-child{
+    padding-top: 25px;
+}
+#min-menu ul li{ 
+    padding-top: 17px;
+}
+
+/* Default behavior*/
+.min-on {
+    display: none !important;
+}
+.min-off {
+    display: block !important;
+}
+
+/* for small screens (< 600px) */
+@media screen and (max-width: 600px) {
+    .min-on {
+        display: block !important;
+    }
+    .min-off {
+        display: none !important;
+    }
+}
