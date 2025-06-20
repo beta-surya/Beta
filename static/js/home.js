@@ -1,3 +1,6 @@
+// this file contains the code for search menu and 
+// display menu under screen width of 600px 
+
 const min_menu_btn = document.querySelector("#min-menu-btn");
 const min_menu = document.querySelector("#min-menu");
 const header = document.querySelector("#header");
@@ -18,6 +21,8 @@ document.addEventListener("click", (event) => {
         min_menu_btn.classList.remove("min-menu-active");
     }
 });
+
+
 
 // search - content 
 const medium = document.querySelector("#medium");

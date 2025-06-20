@@ -11,16 +11,14 @@
 <body>
 	<div id="root">
 		<div id="head">
-			<div id="min-menu" class="min-on ">
-				<!-- <div>
-					close
-				</div> -->
-				<ul>
+			<div id="min-menu" class="min-on">
+				<ul id="min-header-menu">
 					<li id="min-selected-menu">Search</li>
 					<li>Diary</li>
 					<li>Todo</li>
 					<li>Notebook</li>
 				</ul>
+
 			</div>	
 			<div id="header">
 				<div id="beta_logo">
@@ -32,7 +30,7 @@
 						class="min-on"
 						id="min-menu-btn"
 						/>
-					<ul  class="min-off">
+					<ul  class="min-off" id="header-menu">
 						<li id="selected-menu">Search</li>
 						<li>Diary</li>
 						<li>Todo</li>
@@ -42,7 +40,7 @@
 			</div>
 			
 		</div>	
-		<div id="search-content">
+		<div id="search-content" class="active-menu">
 			<form id="searchquery" onsubmit="getlink(event)">
 				<input type="search" name="search-box" id="search-box" placeholder="Hello , what you want" required>
 				<button type="submit"><svg viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" enable-background="new 0 0 76.00 76.00" xml:space="preserve"  transform="rotate(0)matrix(-1, 0, 0, 1, 0, 0)">
@@ -77,7 +75,7 @@
 	</div>
 
 	<script src="{{ url_for('static' , filename='js/home.js' )}}"></script>
-
+	<script src="{{ url_for('static' , filename='js/switchMenu.js' )}}"></script>
 </body>
 
 </html>
