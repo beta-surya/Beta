@@ -1,0 +1,50 @@
+.wait-till-user-enter {
+    pointer-events: none;
+    opacity: 0.6;            /* Optional: make it look disabled */
+    cursor: not-allowed;     /* Optional: show disabled cursor */
+}
+#addTodoDiv{
+    div{
+        display: none;
+    }
+    #addTodomenu{
+        display: block;
+    }
+}
+#addTodoDiv-active{
+    div{
+        display: block;
+    }    
+    #addTodomenu{
+        display: none;
+    }
+}
+
+.task-box{
+    p{
+        display: block;
+    }
+    input, select{
+        display: none;
+    }
+}
+.task-box.task-update-input-box{
+    p{
+        display: none;
+    }
+    input, select{
+        display: block;
+    }
+}
+.pending{
+
+}
+.ongoing{
+
+}
+.completed{
+
+}                         
+.cancelled{
+
+}                     
