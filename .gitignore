@@ -1,8 +1,7 @@
 # Ignore pyc files
 __pycache__/
 *.pyc
-# ignore the test folder with contain 
-# which are unrelated to this project
+# ignore the test folder 
 test/
 # ignoring data's on data folder
 todo.json
