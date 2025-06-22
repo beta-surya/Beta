@@ -23,7 +23,7 @@ def addTodo():
     newData = request.get_json()
     # adding TODO on database
     todo.add_data(newData)
-    return 200
+    return jsonify(200)
     # 200 - ok <-response
     # 500 - error -> internal server error
 
@@ -33,7 +33,16 @@ def updateTodo():
     newData = request.get_json()
     # updating TODO on database
     todo.update_data(newData)
-    return 200
+    return jsonify(200)
+
+@app.route('/deletetodo' ,methods = ["POST"])
+def deleteTodo():
+    
+    newData = request.get_json()
+    # updating TODO on database
+    todo.delete_data(newData)
+    return jsonify(200)
+
 
 if __name__ == "__main__":
     app.run( # host='0.0.0.0',

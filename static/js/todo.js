@@ -1,20 +1,54 @@
 // number of todo's
 let global_todo_count = 0;
+// 
+// sendUpdateTodo send the updated todo to backend
+// 
+function sendUpdateTodo(id,task,status,datetime){
 
+    const data={
+        id : id,
+        task : task,
+        status : status,
+        datetime : datetime
+    }
+
+    fetch("/updatetodo" , {
+        method:"POST",
+        headers:{
+                "Content-Type":"application/json"
+            },
+        body: JSON.stringify(data)
+    })
+    .then( response =>{
+        if(!response.ok) throw new Error("response is false\n"+response.ok);
+        
+    })
+    .catch( error =>{
+        console.log("## error \t",error);
+    });
+}
+// 
+// 
+// 
 export function switch2Todo() {
 
-    fetch("/json")
-        .then(response => {
-            // addTodoOnContent(response.json());
+    fetch("/gettodo")
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("response is false");
+            }
             return response.json();
         })
-        .then(msg => {
-            addTodoOnContent(msg);
+        .then(data => {
+            if(data == 500){
+                throw new Error("data is not fetched");
+            }
+            addTodoOnContent(data);
         })
-        .catch(err => {
-            console.error(err);
-        })
-
+        .catch( error =>{
+            console.log("## error\t"+error);
+            return "error";
+        });
 }
 
 function getDateTime(){
@@ -37,7 +71,7 @@ function getDateTime(){
 
     let ftime = hr + ':' + min + ' ' + meridiem;
     
-    return fdate + '   ' + ftime;
+    return fdate + ' ' + ftime;
 }
 
 function addTodo(id,task,status,datetime){
@@ -72,18 +106,42 @@ function addTodo(id,task,status,datetime){
 }
 
 export function addnewTodo(){
+
     const div = document.querySelector("#addTodoDiv-active");
     const task = div.querySelector("input").value;
     const status = div.querySelector("select").value;
     const datetime  = getDateTime();
     global_todo_count += 1;
     const id = global_todo_count;
+
+    const newdata = { //this will be used inside the fetch()
+        id: id,
+        task: task,
+        status: status,
+        datetime: datetime
+    }
+
+    fetch("/addtodo" , {
+            method:"POST",
+            headers:{
+                    "Content-Type":"application/json"
+                },
+            body: JSON.stringify(newdata)
+        })
+        .then( response =>{
+            if(!response.ok) throw new Error("response is false\n"+response.ok);
+        })
+        .catch( error =>{
+            console.log("## error \t",error);
+        });
+
     addTodo(id,task,status,datetime);    
     // erase the input value 
     div.querySelector("input").value = '';
     // to close the add new todo interface
     cancelAddTodo();
 }
+
 function addTodoOnContent(jsons) {
     const content = document.querySelector("#content");
     content.innerHTML = `
@@ -128,6 +186,25 @@ function addTodoOnContent(jsons) {
 // 
 export function deleteTodo(event){
     event.target.closest(".todo").remove();
+
+    const todoDiv = event.target.closest("div");
+    
+    const data = {
+        id:parseInt(todoDiv.id.replace("task_id_",""))
+    }
+    fetch("/deletetodo" , {
+        method:"POST",
+        headers:{
+                "Content-Type":"application/json"
+            },
+        body: JSON.stringify(data)
+    })
+    .then( response =>{
+        if(!response.ok) throw new Error("response is false\n"+response.ok);
+    })
+    .catch( error =>{
+        console.log("## error \t",error);
+    });
 }
 export function editTodo(event){
 
@@ -162,22 +239,25 @@ export function updateTodo(event){
     const input = inputDiv.querySelector("input");
     currentTask.textContent = input.value;
     
+    sendUpdateTodo(
+        parseInt(todoDiv.id.replace("task_id_","")),
+        input.value,
+        inputDiv.querySelector("select").value,
+        getDateTime()
+    )
+    
     editbtn.textContent = "Edit";
     editbtn.onclick = (event) => editTodo(event);
 
     const delbtn = todoDiv.querySelector(".task-del");
     delbtn.textContent = "Delete";
     delbtn.onclick = (event) => deleteTodo(event);
-
-    // updating backend
-    updateBackend(todoDiv.id, currentTask.textContent);
 }
 // during input if user presses the enter key ,
 // then the task will be updated automatically
 export function checkEnter_todoUpdate(event){
     if(event.key != "Enter" || checkme_whether_im_blank(event)==false) return;
 
-    console.log(event.key);
     
     const input = event.target;
     const todoDiv = input.closest(".todo");
@@ -189,6 +269,13 @@ export function checkEnter_todoUpdate(event){
     const currentTask = inputDiv.querySelector("p");
     currentTask.textContent = input.value;
 
+    sendUpdateTodo(
+        parseInt(todoDiv.id.replace("task_id_","")),
+        input.value,
+        inputDiv.querySelector("select").value,
+        getDateTime()
+    );
+    
     const editbtn = todoDiv.querySelector(".task-edit");
     editbtn.textContent = "Edit";
     editbtn.onclick = (event) => editTodo(event);
@@ -197,8 +284,6 @@ export function checkEnter_todoUpdate(event){
     delbtn.textContent = "Delete";
     delbtn.onclick = (event) => deleteTodo(event);
     
-    // updating backend
-    updateBackend(todoDiv.id, currentTask.textContent);
 }
 export function checkEnter_addTodo(event){
     if(event.key == "Enter" && checkme_whether_im_blank(event)==true){
@@ -250,9 +335,3 @@ export function checkme_whether_im_blank(event){
     // retun true if input is not blank
     return event.target.value.length == 0?false:true;
 }
-
-function updateBackend(id, newtask){
-    console.log(id , newtask);
-    // pending 
-}
-
