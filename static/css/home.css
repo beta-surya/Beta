@@ -9,101 +9,128 @@
 }
 
 /* common  */
-*{
+* {
     margin: 0;
     padding: 0;
 }
-body{
+
+#root {
     font-family: "montserrat";
-    background-image: url(../img/tree-background.jpg);
+    background-image: url(../img/wallpaper-txt.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: center;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
+
+#head {
+    height: 4.5rem;
+}
+
+#root-content {
+    flex: 1;
+}
+
 /* logo */
-#header{
+#header {
     width: 100%;
     height: 4.5rem;
 }
-#header #beta_logo{
+
+#header #beta_logo {
     padding: 10px;
-    padding-left:30px ;
+    padding-left: 30px;
 }
-#header #beta_logo img{
+
+#header #beta_logo img {
     height: 2.8rem;
     cursor: pointer;
 }
 
 /* header split */
-#header{
+#header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(247, 247, 247, 0);
 }
-#header #menu ul li{
+
+#header #menu ul li {
     display: inline;
     list-style-type: none;
     padding-right: 40px;
-    color: #21203F;
+    color: white;
     font-family: "montserrat";
     font-size: 1rem;
-    letter-spacing: 1px; 
+    letter-spacing: 1px;
     align-items: center;
 }
-#header #menu ul li:hover{
+
+#header #menu ul li:hover {
     color: #ff4500;
     cursor: pointer;
 }
-#selected-menu{
+
+#selected-menu {
     color: #ff4500 !important;
     text-decoration: underline;
     text-decoration-style: dotted;
     text-decoration-color: #21203F;
     text-decoration-thickness: 1.25px;
 }
-#min-selected-menu{
+
+#min-selected-menu {
     text-decoration: underline;
     text-decoration-style: wavy;
     text-decoration-color: #21203F;
     text-decoration-thickness: 1.25px;
 }
+
 /* menu button - visible on smaller width  */
 
-#header #menu #min-menu-btn{
+#header #menu #min-menu-btn {
     width: 35px;
     padding: 15px;
     cursor: pointer;
     transition: transform 0.5s ease;
 }
-#header #menu #min-menu-btn.min-menu-active{
+
+#header #menu #min-menu-btn.min-menu-active {
     cursor: pointer;
     transform: rotate(90deg);
 }
+
 /* when menu btn is clicked - the min-menu will be shown */
-#min-menu{
+#min-menu {
     height: 0;
     transition: height 0.5s ease-out,
-                color .5s ease,
-                background-color .5s ease;
-    visibility:hidden;
+        color .5s ease,
+        background-color .5s ease;
+    visibility: hidden;
 }
-#min-menu.min-menu-active{
+
+#min-menu.min-menu-active {
     background-color: #ff4500;
     color: #21203F;
     height: 14rem;
     visibility: visible;
 }
-#min-menu ul{
+
+#min-menu ul {
     font-size: 1.125rem;
-    list-style-type:none;
+    list-style-type: none;
     margin-left: 5%;
 }
-#min-menu ul li:first-child{
+
+#min-menu ul li:first-child {
     padding-top: 25px;
 }
-#min-menu ul li{ 
+
+#min-menu ul li {
     padding-top: 25px;
     cursor: pointer;
     /* display property - to increase mobile UI - based on feelback */
@@ -114,6 +141,7 @@ body{
 .min-on {
     display: none !important;
 }
+
 .min-off {
     display: block !important;
 }
@@ -123,6 +151,7 @@ body{
     .min-on {
         display: block !important;
     }
+
     .min-off {
         display: none !important;
     }
@@ -132,22 +161,25 @@ body{
 /*
     search content
 */
-#search-content{
+#search-content {
     width: 50%;
-    height: calc(100vh - 4.5rem);
+    /* height: calc(100vh - 4.5rem); */
     background-color: transparent;
-    margin:auto;
+    margin: auto;
     padding-top: 5%;
 }
+
 /* search query (search box and search btn) */
-#search-content #searchquery{
+#search-content #searchquery {
     display: flex;
     width: 90%;
-    border: 2px solid #00000036;
+    /* border: 2px solid #00000036; */
+    border: 3px solid #01010f42;
     border-radius: 10px;
     margin: auto;
 }
-#search-content #searchquery #search-box{
+
+#search-content #searchquery #search-box {
     width: 88%;
     background-color: transparent !important;
     border: none;
@@ -158,17 +190,20 @@ body{
     color: #21203F;
     font-family: "montserrat";
 }
-#search-content #searchquery button{
+
+#search-content #searchquery button {
     width: 10%;
     background-color: transparent;
     border: none;
     cursor: pointer;
 }
-#magnify-glass{
+
+#magnify-glass {
     fill: #00000082;
 }
+
 /*searchselect - select where to search */
-#searchselect{
+#searchselect {
     background-color: transparent;
     width: 100%;
     display: flex;
@@ -177,7 +212,7 @@ body{
     gap: 5%;
 }
 
-#searchselect div{
+#searchselect div {
     /* margin: auto; */
     width: 40%;
     padding-right: 1%;
@@ -185,9 +220,10 @@ body{
     border-radius: 10px;
     outline: none;
     background-color: transparent;
-    cursor:pointer;
+    cursor: pointer;
 }
-#searchselect select{
+
+#searchselect select {
     width: 100%;
     padding: 5%;
     padding-right: 0;
@@ -195,42 +231,57 @@ body{
     outline: none;
     background-color: transparent;
     font-family: "montserrat";
-    cursor:pointer;
+    cursor: pointer;
     font-size: 14px;
-    /* color: #21203F; */
+    color: black;
 }
 
 /* 
 making search menu active and deacitive
 */
-#search-content{
+#search-content {
     display: none;
 }
-#search-content.active-menu{
+
+#search-content.active-menu {
     display: block;
 }
 
 /* default content page */
-#content{
+#content {
     width: 100%;
-    height: calc(100vh - 4.5rem);
+    /* height: calc(100vh - 4.5rem); */
     background-color: transparent;
     display: none;
     font-family: "montserrat";
 }
-#content.active-menu{
+
+#content.active-menu {
     display: block;
 }
 
 @media screen and (max-width:1100px) {
-    #search-content{
+    #search-content {
         width: 75%;
         padding-top: 10%;
     }
+    #search-content #searchquery button {
+        width: 14%;
+    }
+    #searchselect select {
+        padding: 6%;
+    }
 }
-@media screen and (max-width:600px){
-    #search-content{
+
+@media screen and (max-width:600px) {
+    #search-content {
         width: 95%;
-        padding-top: 10%;
+        padding-top: 20%;
+    }
+    #search-content #searchquery button {
+        width: 18%;
+    }
+    #searchselect select {
+        padding: 8%;
     }
 }

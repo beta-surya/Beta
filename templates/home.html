@@ -4,7 +4,7 @@
 <head>
 	<title> Beta</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+
 	<link rel="shortcut icon" href="{{ url_for('static', filename='img/Favicon.png') }}" type="image/x-icon">
 	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/home.css' )}}">
 	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/todo.css' )}}">
@@ -22,18 +22,15 @@
 					<li>Notebook</li>
 				</ul>
 
-			</div>	
+			</div>
 			<div id="header">
 				<div id="beta_logo">
 					<img src="{{ url_for('static', filename='img/Beta_Logo_300x300_trim.png')}}" alt="Beta" />
 				</div>
 				<div id="menu">
-					<img src="{{ url_for('static', filename='/img/menu-horizontal.svg') }}"
-						alt="Menu"  
-						class="min-on"
-						id="min-menu-btn"
-						/>
-					<ul  class="min-off" id="header-menu">
+					<img src="{{ url_for('static', filename='/img/menu-horizontal.svg') }}" alt="Menu" class="min-on"
+						id="min-menu-btn" />
+					<ul class="min-off" id="header-menu">
 						<li id="selected-menu">Search</li>
 						<li>Diary</li>
 						<li>Todo</li>
@@ -41,44 +38,53 @@
 					</ul>
 				</div>
 			</div>
-			
-		</div>	
-		<div id="search-content">
-			<form id="searchquery" onsubmit="getlink(event)">
-				<input type="search" name="search-box" id="search-box" placeholder="Hello , what you want" required>
-				<button type="submit"><svg viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" enable-background="new 0 0 76.00 76.00" xml:space="preserve"  transform="rotate(0)matrix(-1, 0, 0, 1, 0, 0)">
-					<g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier">
-					<path id="magnify-glass" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round" d="M 42.5,22C 49.4036,22 55,27.5964 55,34.5C 55,41.4036 49.4036,47 42.5,47C 40.1356,47 37.9245,46.3435 36,45.2426L 26.9749,54.2678C 25.8033,55.4393 23.9038,55.4393 22.7322,54.2678C 21.5607,53.0962 21.5607,51.1967 22.7322,50.0251L 31.7971,40.961C 30.6565,39.0755 30,36.8644 30,34.5C 30,27.5964 35.5964,22 42.5,22 Z M 42.5,26C 37.8056,26 34,29.8056 34,34.5C 34,39.1944 37.8056,43 42.5,43C 47.1944,43 51,39.1944 51,34.5C 51,29.8056 47.1944,26 42.5,26 Z ">
-					</path> </g>
-				</svg></button>
-			</form>	
-
-			<div id="searchselect">
-				<div>
-					<select name="medium" id="medium">
-						<option value="engine">Search Engine</option>
-						<option value="socialmedia">Social Media</option>
-						<option value="archive">Library / Archive</option>
-						<option value="newstn">News - Tamilnadu</option>
-						<option value="newsind">News - India</option>
-						<option value="newsww">News - World</option>
-					</select>
-				</div>
-				<div>
-					<select name="platform" id="platform">
-					<!-- options will be add using JS -->
-					</select>
-				</div>
-			</div>	
 
 		</div>
-		<div id="content">
+		<div id="root-content">
+			<div id="search-content">
+				<form id="searchquery" onsubmit="getlink(event)">
+					<input type="search" name="search-box" id="search-box" placeholder="Hello , what you want" required>
+					<button type="submit"><svg viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full"
+							enable-background="new 0 0 76.00 76.00" xml:space="preserve"
+							transform="rotate(0)matrix(-1, 0, 0, 1, 0, 0)">
+							<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+							<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+							<g id="SVGRepo_iconCarrier">
+								<path id="magnify-glass" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round"
+									d="M 42.5,22C 49.4036,22 55,27.5964 55,34.5C 55,41.4036 49.4036,47 42.5,47C 40.1356,47 37.9245,46.3435 36,45.2426L 26.9749,54.2678C 25.8033,55.4393 23.9038,55.4393 22.7322,54.2678C 21.5607,53.0962 21.5607,51.1967 22.7322,50.0251L 31.7971,40.961C 30.6565,39.0755 30,36.8644 30,34.5C 30,27.5964 35.5964,22 42.5,22 Z M 42.5,26C 37.8056,26 34,29.8056 34,34.5C 34,39.1944 37.8056,43 42.5,43C 47.1944,43 51,39.1944 51,34.5C 51,29.8056 47.1944,26 42.5,26 Z ">
+								</path>
+							</g>
+						</svg></button>
+				</form>
+
+				<div id="searchselect">
+					<div>
+						<select name="medium" id="medium">
+							<option value="engine">Search Engine</option>
+							<option value="socialmedia">Social Media</option>
+							<option value="archive">Library / Archive</option>
+							<option value="newstn">News - Tamilnadu</option>
+							<option value="newsind">News - India</option>
+							<option value="newsww">News - World</option>
+						</select>
+					</div>
+					<div>
+						<select name="platform" id="platform">
+							<!-- options will be add using JS -->
+						</select>
+					</div>
+				</div>
+
+			</div>
+			<div id="content">
+			</div>
 		</div>
-	
+
 	</div>
 
 	<script src="{{ url_for('static' , filename='js/home.js' )}}"></script>
-	<script type="module"  src="{{ url_for('static' , filename='js/switchMenu.js' )}}"></script>
+	<script type="module" src="{{ url_for('static' , filename='js/switchMenu.js' )}}"></script>
 </body>
 
 </html>
