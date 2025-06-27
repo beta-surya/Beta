@@ -1,0 +1,283 @@
+/* fonts */
+@font-face {
+    font-family: "montserrat-bold";
+    src: url(../font/montserrat.bold.ttf);
+}
+@font-face {
+    font-family: "montserrat";
+    src: url(../font/montserrat.regular.ttf);
+}
+
+/* common  */
+* {
+    margin: 0;
+    padding: 0;
+}
+#root {
+    font-family: "montserrat";
+    background: linear-gradient(215deg,
+        orange ,
+        rgba(255,100,0,1)
+        /* rgb(187, 81, 11)  */
+    );
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* logo */
+#header {
+    width: 100%;
+    height: 4.5rem;
+}
+
+#header #beta_logo {
+    padding: 10px;
+    padding-left: 30px;
+}
+
+#header #beta_logo img {
+    height: 2.8rem;
+    cursor: pointer;
+}
+
+/* header split */
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(247, 247, 247, 0);
+}
+
+#header #menu ul li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 40px;
+    color: white;
+    font-family: "montserrat";
+    font-size: 1rem;
+    letter-spacing: 1px;
+    align-items: center;
+}
+
+#header #menu ul li:hover {
+    color: #21203F;
+    cursor: pointer;
+}
+
+#selected-menu {
+    color: #ff4500 !important;
+}
+
+#min-selected-menu {
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #21203F;
+    text-decoration-thickness: 1.25px;
+}
+
+/* menu button - visible on smaller width  */
+
+#header #menu #min-menu-btn {
+    width: 35px;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+#header #menu #min-menu-btn.min-menu-active {
+    cursor: pointer;
+    transform: rotate(90deg);
+}
+
+/* when menu btn is clicked - the min-menu will be shown */
+#min-menu {
+    height: 0;
+    transition: height 0.5s ease-out,
+        color .5s ease,
+        background-color .5s ease;
+    visibility: hidden;
+}
+
+#min-menu.min-menu-active {
+    /* background-color: #ff4500; */
+    background: linear-gradient(180deg , #ff4500 , rgba(255,143,0,1),transparent);
+    color: #21203F;
+    height: 14rem;
+    visibility: visible;
+}
+
+#min-menu ul {
+    font-size: 1.125rem;
+    list-style-type: none;
+    margin-left: 5%;
+}
+
+#min-menu ul li:first-child {
+    padding-top: 25px;
+}
+
+#min-menu ul li {
+    padding-top: 25px;
+    cursor: pointer;
+    /* display property - to increase mobile UI - based on feelback */
+    display: table;
+}
+
+/* Default behavior*/
+.min-on {
+    display: none !important;
+}
+
+.min-off {
+    display: block !important;
+}
+
+/* for small screens (< 600px) */
+@media screen and (max-width: 600px) {
+    .min-on {
+        display: block !important;
+    }
+
+    .min-off {
+        display: none !important;
+    }
+}
+
+
+/*
+    search content
+*/
+#search-content {
+    width: 50%;
+    /* height: calc(100vh - 4.5rem); */
+    background-color: transparent;
+    margin: auto;
+    padding-top: 5%;
+}
+
+/* search query (search box and search btn) */
+#search-content #searchquery {
+    display: flex;
+    width: 90%;
+    border: 2px solid rgba(255, 255, 255, 0.395);
+    /* border: 3px solid #01010f42; */
+    border-radius: 10px;
+    margin: auto;
+}
+
+#search-content #searchquery #search-box {
+    width: 88%;
+    background-color: transparent !important;
+    border: none;
+    outline: none;
+    margin-left: 2%;
+    font-size: medium;
+    cursor: pointer;
+    color: #21203F;
+    font-family: "montserrat";
+}
+
+#search-content #searchquery button {
+    width: 10%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#magnify-glass {
+    /* fill: #00000082; */
+    fill: rgba(255, 255, 255, 0.956);
+}
+
+/*searchselect - select where to search */
+#searchselect {
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    margin-top: 2.5%;
+    justify-content: center;
+    gap: 5%;
+}
+
+#searchselect div {
+    /* margin: auto; */
+    width: 40%;
+    padding-right: 1%;
+    /* border: 2px solid #00000040; */
+    border: 2px solid rgba(255, 255, 255, 0.295);
+    border-radius: 10px;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#searchselect select {
+    width: 100%;
+    padding: 5%;
+    padding-right: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: "montserrat";
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+}
+#searchselect option{
+    color: black;
+} 
+/* 
+making search menu active and deacitive
+*/
+#search-content {
+    display: none;
+}
+
+#search-content.active-menu {
+    display: block;
+}
+
+/* default content page */
+#content {
+    width: 100%;
+    /* height: calc(100vh - 4.5rem); */
+    background-color: transparent;
+    display: none;
+    font-family: "montserrat";
+}
+
+#content.active-menu {
+    display: block;
+}
+
+@media screen and (max-width:1100px) {
+    #search-content {
+        width: 75%;
+        padding-top: 10%;
+    }
+    #search-content #searchquery button {
+        width: 14%;
+    }
+    #searchselect select {
+        padding: 6%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    #search-content {
+        width: 95%;
+        padding-top: 20%;
+    }
+    #search-content #searchquery button {
+        width: 18%;
+    }
+    #searchselect select {
+        padding: 8%;
+    }
+}

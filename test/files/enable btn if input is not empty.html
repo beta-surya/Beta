@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        .wait-till-user-enter {
+            pointer-events: none;
+            opacity: 0.6;            /* Optional: make it look disabled */
+            cursor: not-allowed;     /* Optional: show disabled cursor */
+        }
+    </style>
+</head>
+<body>
+    <div class="task">
+        <div>
+            <input type="text" class="todo_add_edit_input" oninput="checkme(event , 'edit')">
+        </div>
+        <div>
+            <button class="edit wait-till-user-enter">hai</button>
+        </div>
+    </div>
+    <script>
+        function checkme(event , Class){
+            
+            const div = event.target.closest(".task");
+            const btn = div.querySelector('.'+Class);
+            
+            if(event.target.value == ''){
+                console.log("empty");
+                btn.classList.add('wait-till-user-enter');
+            }
+            else{
+                btn.classList.remove('wait-till-user-enter');
+            }
+            
+        }
+    </script>
+</body>
+</html>
