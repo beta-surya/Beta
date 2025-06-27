@@ -6,6 +6,9 @@ app = Flask(__name__,
             static_folder='static')
 
 @app.route("/")
+@app.route("/Search")
+@app.route("/Todo")
+@app.route("/Notebook")
 def home():
     return render_template("home.html")
 

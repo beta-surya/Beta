@@ -1,4 +1,5 @@
 import json
+import os
 
 def get_data():
     try:   
@@ -7,12 +8,14 @@ def get_data():
         return data
     except FileNotFoundError as f:
         print(f)
+        os.makedirs("data", exist_ok=True)
         with open("data/todo.json","w") as file:
             json.dump([], file, indent=4)
         return "createdNewFile"
     except Exception as e:
         print(e)
         return "error"
+get_data()
     
 def add_data(newdata):
     with open("data/todo.json",'r') as file:

@@ -13,25 +13,20 @@
     margin: 0;
     padding: 0;
 }
-
 #root {
     font-family: "montserrat";
-    background-image: url(../img/wallpaper-txt.jpg);
-    background-repeat: no-repeat;
+    background: linear-gradient(215deg,
+        orange ,
+        rgba(255,100,0,1)
+        /* rgb(187, 81, 11)  */
+    );
+    background-repeat: no-repeat; 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-#head {
-    height: 4.5rem;
-}
-
-#root-content {
-    flex: 1;
 }
 
 /* logo */
@@ -71,16 +66,12 @@
 }
 
 #header #menu ul li:hover {
-    color: #ff4500;
+    color: #21203F;
     cursor: pointer;
 }
 
 #selected-menu {
     color: #ff4500 !important;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: #21203F;
-    text-decoration-thickness: 1.25px;
 }
 
 #min-selected-menu {
@@ -114,7 +105,8 @@
 }
 
 #min-menu.min-menu-active {
-    background-color: #ff4500;
+    /* background-color: #ff4500; */
+    background: linear-gradient(180deg , #ff4500 , rgba(255,143,0,1),transparent);
     color: #21203F;
     height: 14rem;
     visibility: visible;
@@ -173,8 +165,8 @@
 #search-content #searchquery {
     display: flex;
     width: 90%;
-    /* border: 2px solid #00000036; */
-    border: 3px solid #01010f42;
+    border: 2px solid rgba(255, 255, 255, 0.395);
+    /* border: 3px solid #01010f42; */
     border-radius: 10px;
     margin: auto;
 }
@@ -199,7 +191,8 @@
 }
 
 #magnify-glass {
-    fill: #00000082;
+    /* fill: #00000082; */
+    fill: rgba(255, 255, 255, 0.956);
 }
 
 /*searchselect - select where to search */
@@ -216,7 +209,8 @@
     /* margin: auto; */
     width: 40%;
     padding-right: 1%;
-    border: 2px solid #00000040;
+    /* border: 2px solid #00000040; */
+    border: 2px solid rgba(255, 255, 255, 0.295);
     border-radius: 10px;
     outline: none;
     background-color: transparent;
@@ -233,9 +227,11 @@
     font-family: "montserrat";
     cursor: pointer;
     font-size: 14px;
-    color: black;
+    color: white;
 }
-
+#searchselect option{
+    color: black;
+} 
 /* 
 making search menu active and deacitive
 */

@@ -17,23 +17,60 @@ window.openAddTodoMenu = openAddTodoMenu;
 window.addnewTodo = addnewTodo;
 window.checkme_whether_im_blank = checkme_whether_im_blank;
 
-let currentMenu = "Search"; // by default.......
-// let currentMenu = "Todo"; // used while development
+
+function get_current_menuFromURL() {
+    const path = window.location.pathname; // e.g., "/Todo"
+    const menu = path.split('/')[1];       
+    return menu || 'Search';                 // default to 'Search' if path is "/"
+}
+function changeMenuColor(currentMenu) {
+    // Header menu (wider view)
+    const lists = document.querySelectorAll("#header-menu li");
+    lists.forEach(li => {
+        li.id = ''; // Remove previous selection
+        if (li.textContent.toLowerCase() === currentMenu.toLowerCase()) {
+            li.id = "selected-menu";
+        }
+    });
+
+    // Min header menu (less than 600px view)
+    const minlists = document.querySelectorAll("#min-header-menu li");
+    minlists.forEach(li => {
+        li.id = ''; // Remove previous selection
+        if (li.textContent.toLowerCase() === currentMenu.toLowerCase()) {
+            li.id = "min-selected-menu";
+        }
+    });
+}
+
+// let currentMenu = "Search"; // by default.......
+let currentMenu = get_current_menuFromURL();
+changeMenuColor(currentMenu);
+
+switch_menu();
+
+function update_address(){
+    history.pushState({ page: currentMenu }, '', `/${currentMenu}`);
+}
+
 
 function switch_menu(){
-    
+
     // search menu is default and it's code is present in home html itself 
     // when remaing menu are selected , search-content div is just hidden 
     // and allow other menu to be appear on content div
     if(currentMenu == "Search"){
         document.querySelector("#search-content").classList.add("active-menu");
         document.querySelector("#content").classList.remove("active-menu");
+        console.log("1");
     }
     else{
         if(currentMenu != "Search"){
-        document.querySelector("#search-content").classList.remove("active-menu");
-        document.querySelector("#content").classList.add("active-menu");
-        document.querySelector("#content").innerHTML = '';
+
+            document.querySelector("#search-content").classList.remove("active-menu");
+            document.querySelector("#content").classList.add("active-menu");
+            document.querySelector("#content").innerHTML = '';
+            console.log("2");    
         }
         
         if(currentMenu == "Todo"){
@@ -43,10 +80,11 @@ function switch_menu(){
             console.error("error\t" , currentMenu);
         }
     }
+    
+    update_address();
 
     return;
 }
-
 
 // headerMEnu - menu from wider view
 const lists = document.querySelectorAll("#header-menu li");
@@ -83,5 +121,3 @@ minlists.forEach((li)=>{
         switch_menu();
     })
 })
-
-switch_menu(currentMenu);
