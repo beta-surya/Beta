@@ -1,101 +1,32 @@
 // this file contains the code for search menu and 
 // display menu under screen width of 600px 
 
-const min_menu_btn = document.querySelector("#min-menu-btn");
-const min_menu = document.querySelector("#min-menu");
-const header = document.querySelector("#header");
 
-// Toggle the menu when the button is clicked
-header.addEventListener("click", (event) => {
+let minMenuActivestate = false; 
+
+function showMinMenu(event){
+
+    const min_menu_btn = document.querySelector("#min-menu-btn");
+    const min_menu = document.querySelector("#min-menu");
+
     event.stopPropagation(); // Prevent it from triggering the outside click
     min_menu_btn.classList.toggle("min-menu-active");
     min_menu.classList.toggle("min-menu-active");
-});
-
+    minMenuActivestate = true;
+}
 
 // Hide menu when clicking outside of it
 document.addEventListener("click", (event) => {
-    // Check if click is outside the min-menu
-    if (!min_menu.contains(event.target) ) {
-        min_menu.classList.remove("min-menu-active");
-        min_menu_btn.classList.remove("min-menu-active");
+    if(minMenuActivestate == true){
+        // Check if click is outside the min-menu
+        const min_menu_btn = document.querySelector("#min-menu-btn");
+        const min_menu = document.querySelector("#min-menu");
+
+        if (!min_menu.contains(event.target) ) {
+            min_menu.classList.remove("min-menu-active");
+            min_menu_btn.classList.remove("min-menu-active");
+            minMenuActivestate = false;
+        }
     }
+
 });
-
-
-
-// search - content 
-const medium = document.querySelector("#medium");
-const platform = document.querySelector("#platform");
-
-const options = {
-    engine: ['Google', 'Bing', 'Yahoo', 'DuckDuckGo'],
-    socialmedia: ['Reddit', 'YouTube','GitHub'],
-    archive: ['Internet Archive', 'Wikipedia'],
-    newstn: ['Vikatan','Puthiya Thalaimurai',
-            'Dinamani'],
-    newsind: ['Times of India','The Hindu',
-        'Scroll.in','The Wire'],
-    newsww:['BBC','CNN']
-};
-
-function changeOption(selectedMedium){
-    platform.innerHTML= '';
-    options[selectedMedium].forEach((option) => {
-        const newoption = document.createElement("option");
-        newoption.value = option;
-        newoption.textContent = option;
-        platform.appendChild(newoption);
-    });
-}
-changeOption(medium.value);
-medium.addEventListener("change",()=>{
-    changeOption(medium.value);
-})
-// 
-// search link preparation and opening
-// 
-const options_links = {
-    // search engine
-    "Google": "https://www.google.com/search?q=",
-    "Bing": "https://www.bing.com/search?q=",
-    "Yahoo": "https://search.yahoo.com/search?p=",
-    "DuckDuckGo": "https://duckduckgo.com/?q=",
-
-    // Social media
-    "Reddit": "https://www.reddit.com/search/?q=",
-    "YouTube": "https://www.youtube.com/results?search_query=",
-    "GitHub": "https://github.com/search?q=",
-
-    // Archive / Library
-    "Internet Archive": "https://archive.org/search.php?query=",
-    "Wikipedia": "https://en.wikipedia.org/w/index.php?search=",
-
-    // Tamil News
-    "Puthiya Thalaimurai": "https://www.puthiyathalaimurai.com/?s=",
-    "Dinamani": "https://www.dinamani.com/search/?query=",
-    "Vikatan": "https://www.vikatan.com/search?q=",
-
-    // Indian News
-    "Times of India": "https://timesofindia.indiatimes.com/topic/",
-    "The Hindu": "https://www.thehindu.com/search/?q=",
-    "Scroll.in": "https://scroll.in/search?q=",
-    "The Wire": "https://thewire.in/search?q=",
-
-    // World News 
-    "BBC": "https://www.bbc.co.uk/search?q=",
-    "CNN": "https://edition.cnn.com/search?q=",
-};
-
-function getlink(event){
-    event.preventDefault();
-    // search query
-    const query = document.querySelector("#search-box").value;
-    // platform
-    const platform = document.querySelector("#platform").value;
-    // url
-    const url = options_links[platform] + encodeURIComponent(query);
-    // opening on new tab
-    window.open(url, "_blank");    
-}
-

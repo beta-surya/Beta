@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title> Todo@Beta</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="{{ url_for('static', filename='img/Favicon.png') }}" type="image/x-icon">
+	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/header.css' )}}">
+	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/todo.css' )}}">
+
+</head>
+
+<body>
+	<div id="root">
+
+		<div id="head">
+			<script src="{{ url_for('static', filename='js/needHeader.js') }}"></script>
+		</div>
+	
+		<div id="root-content">
+			<div id="content">
+                <div id="addTodoDiv">
+                    <div id='addTodomenu'>
+                        <button onclick='openAddTodoOption()'>add todo</button>
+                    </div>
+                    <div class="task-box task-update-input-box">
+                        <input type="text" oninput="checkWhetherFieldIsBlank(event)" onkeydown="checkEnter_addTodoOption(event)"/>
+                        <span>
+                                <select>
+                                    <option>pending</option>       
+                                    <option>ongoing</option>              
+                                    <option>completed</option>
+                                    <option>cancelled</option>
+                                </select>
+                            </span>
+                    </div>
+                    <div class="task-button"> 
+                            <button class="task-edit wait-till-user-enter" onclick="addnewTodo()">add</button>
+                            <button class="task-del" onclick="cancelAddTodoOption()">cancel</button>
+                    </div>
+                </div>
+                {% for item in todoJson | reverse %}
+                    <div id="task_id_{{  item.id }}" class="todo {{ item.status}}">
+                        <div class="task-box">
+                            <p class="task">{{ item.task }}</p>
+                            <input type="text" oninput="checkWhetherFieldIsBlank(event)" onkeydown="checkEnter_todoUpdate(event)" />
+                            <span>
+                                <select>
+                                    <option>pending</option>       
+                                    <option>ongoing</option>              
+                                    <option>completed</option>
+                                    <option>cancelled</option>
+                                </select>
+                            </span>
+                        </div>
+                        <p class="task-progress"> 
+                            <span class="task-status">{{ item.status }}</span>
+                            <!-- <span class="task-time">{{ item.datetime }}</span> -->
+                            <span>
+                                <button class="task-edit" onclick="editTodo(event)">edit</button>
+                                <button class="task-del" onclick="deleteTodo(event)">delete</button>
+                            </span>
+                        </p>
+
+                    </div>
+                {% endfor %}
+
+                </div>
+            </div>
+		</div>
+
+	</div>
+	
+	<script src="{{ url_for('static' , filename='js/home.js' )}}"></script>
+	<script src="{{ url_for('static' , filename='js/todo.js' )}}"></script>
+
+	
+</body>
+
+</html>

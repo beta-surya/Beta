@@ -4,18 +4,20 @@ import os
 def get_data():
     try:   
         with open("data/todo.json",'r') as file:
-            data = json.load(file)
+            data = json.load(file)     
         return data
+    
     except FileNotFoundError as f:
         print(f)
         os.makedirs("data", exist_ok=True)
         with open("data/todo.json","w") as file:
             json.dump([], file, indent=4)
         return "createdNewFile"
+    
     except Exception as e:
         print(e)
         return "error"
-get_data()
+    
     
 def add_data(newdata):
     with open("data/todo.json",'r') as file:

@@ -2,20 +2,22 @@
 <html lang="en">
 
 <head>
-	<title> Beta</title>
+	<title> Search@Beta</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="shortcut icon" href="{{ url_for('static', filename='img/Favicon.png') }}" type="image/x-icon">
-	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/home.css' )}}">
-	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/todo.css' )}}">
+	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/header.css' )}}">
+	<link rel="stylesheet" href="{{ url_for( 'static' , filename='css/search.css' )}}">
 
 </head>
 
 <body>
 	<div id="root">
+
 		<div id="head">
-			
+			<script src="{{ url_for('static', filename='js/needHeader.js') }}"></script>
 		</div>
+	
 		<div id="root-content">
 			<div id="search-content">
 				<form id="searchquery" onsubmit="getlink(event)">
@@ -33,7 +35,6 @@
 							</g>
 						</svg></button>
 				</form>
-
 				<div id="searchselect">
 					<div>
 						<select name="medium" id="medium">
@@ -53,27 +54,17 @@
 				</div>
 
 			</div>
-			<div id="content">
-			</div>
+			<!-- <div id="content">
+			</div> -->
 		</div>
 
 	</div>
-
+	
+	<script src="{{ url_for('static' , filename='js/search.js' )}}"></script>
 	<script src="{{ url_for('static' , filename='js/home.js' )}}"></script>
-	<script type="module" src="{{ url_for('static' , filename='js/switchMenu.js' )}}"></script>
+	<script src="{{ url_for('static' , filename='js/switchMenu.js' )}}"></script>
 
-	<script>
-				fetch("http://localhost:1234/needHeader")
-		.then(res=>{
-			return res.text();
-		})
-		.then(data=>{
-			console.log(data);
-		})
-		.catch(err=>{
-			console.error(err);
-		})
-	</script>
+	
 </body>
 
 </html>

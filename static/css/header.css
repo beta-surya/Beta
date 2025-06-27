@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-/* header split */
+
 #header {
     display: flex;
     flex-direction: row;
@@ -53,7 +53,10 @@
     align-items: center;
     background-color: rgba(247, 247, 247, 0);
 }
-
+a{
+    text-decoration: none;
+    color: inherit;
+}
 #header #menu ul li {
     display: inline;
     list-style-type: none;
@@ -146,138 +149,5 @@
 
     .min-off {
         display: none !important;
-    }
-}
-
-
-/*
-    search content
-*/
-#search-content {
-    width: 50%;
-    /* height: calc(100vh - 4.5rem); */
-    background-color: transparent;
-    margin: auto;
-    padding-top: 5%;
-}
-
-/* search query (search box and search btn) */
-#search-content #searchquery {
-    display: flex;
-    width: 90%;
-    border: 2px solid rgba(255, 255, 255, 0.395);
-    /* border: 3px solid #01010f42; */
-    border-radius: 10px;
-    margin: auto;
-}
-
-#search-content #searchquery #search-box {
-    width: 88%;
-    background-color: transparent !important;
-    border: none;
-    outline: none;
-    margin-left: 2%;
-    font-size: medium;
-    cursor: pointer;
-    color: #21203F;
-    font-family: "montserrat";
-}
-
-#search-content #searchquery button {
-    width: 10%;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-}
-
-#magnify-glass {
-    /* fill: #00000082; */
-    fill: rgba(255, 255, 255, 0.956);
-}
-
-/*searchselect - select where to search */
-#searchselect {
-    background-color: transparent;
-    width: 100%;
-    display: flex;
-    margin-top: 2.5%;
-    justify-content: center;
-    gap: 5%;
-}
-
-#searchselect div {
-    /* margin: auto; */
-    width: 40%;
-    padding-right: 1%;
-    /* border: 2px solid #00000040; */
-    border: 2px solid rgba(255, 255, 255, 0.295);
-    border-radius: 10px;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-#searchselect select {
-    width: 100%;
-    padding: 5%;
-    padding-right: 0;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-family: "montserrat";
-    cursor: pointer;
-    font-size: 14px;
-    color: white;
-}
-#searchselect option{
-    color: black;
-} 
-/* 
-making search menu active and deacitive
-*/
-#search-content {
-    display: none;
-}
-
-#search-content.active-menu {
-    display: block;
-}
-
-/* default content page */
-#content {
-    width: 100%;
-    /* height: calc(100vh - 4.5rem); */
-    background-color: transparent;
-    display: none;
-    font-family: "montserrat";
-}
-
-#content.active-menu {
-    display: block;
-}
-
-@media screen and (max-width:1100px) {
-    #search-content {
-        width: 75%;
-        padding-top: 10%;
-    }
-    #search-content #searchquery button {
-        width: 14%;
-    }
-    #searchselect select {
-        padding: 6%;
-    }
-}
-
-@media screen and (max-width:600px) {
-    #search-content {
-        width: 95%;
-        padding-top: 20%;
-    }
-    #search-content #searchquery button {
-        width: 18%;
-    }
-    #searchselect select {
-        padding: 8%;
     }
 }

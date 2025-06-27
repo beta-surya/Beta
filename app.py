@@ -5,20 +5,33 @@ app = Flask(__name__,
             template_folder='templates',
             static_folder='static')
 
+
+@app.route("/needHeader")
+def sendHeader():
+    return render_template("header.html")
+
+# ***********************
+#       search
+# ***********************
 @app.route("/")
 @app.route("/Search")
-@app.route("/Todo")
-@app.route("/Notebook")
+@app.route("/search")
 def home():
     return render_template("home.html")
 
-@app.route('/gettodo')
-def sendTodo():
+# **********************
+#           todo
+# ***********************
+@app.route("/")
+@app.route("/Todo")
+@app.route("/todo")
+def Todo():
     data = todo.get_data()
+    print(data)
     if data == "createdNewFile" or data == "error":
-       return jsonify(500) 
+        return render_template("todo.html")    
     else:
-        return jsonify(data)
+        return render_template("todo.html" , todoJson = todo.get_data())    
 
 @app.route('/addtodo' ,methods = ["POST"])
 def addTodo():
@@ -27,8 +40,6 @@ def addTodo():
     # adding TODO on database
     todo.add_data(newData)
     return jsonify(200)
-    # 200 - ok <-response
-    # 500 - error -> internal server error
 
 @app.route('/updatetodo' ,methods = ["POST"])
 def updateTodo():
@@ -40,15 +51,15 @@ def updateTodo():
 
 @app.route('/deletetodo' ,methods = ["POST"])
 def deleteTodo():
-    
     newData = request.get_json()
     # updating TODO on database
     todo.delete_data(newData)
     return jsonify(200)
 
 
+
 if __name__ == "__main__":
-    app.run( # host='0.0.0.0',
+    app.run( host='0.0.0.0',
             debug=True,
             port=1234,
             extra_files=[
